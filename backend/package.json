@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n \"gateway,auth,chat,agent,billing\" -c \"blue,green,yellow,magenta,cyan\" \"npm run dev:gateway\" \"npm run dev:auth\" \"npm run dev:chat\" \"npm run dev:agent\" \"npm run dev:billing\"",
+    "start": "concurrently -n \"gateway,auth,chat,agent,billing\" -c \"blue,green,yellow,magenta,cyan\" \"npm run start:gateway\" \"npm run start:auth\" \"npm run start:chat\" \"npm run start:agent\" \"npm run start:billing\"",
+    "dev:gateway": "npm --prefix gateway run dev",
+    "dev:auth": "npm --prefix services/auth run dev",
+    "dev:chat": "npm --prefix services/chat run dev",
+    "dev:agent": "npm --prefix services/agent run dev",
+    "dev:billing": "npm --prefix services/billing run dev",
+    "start:gateway": "npm --prefix gateway run start",
+    "start:auth": "npm --prefix services/auth run start",
+    "start:chat": "npm --prefix services/chat run start",
+    "start:agent": "npm --prefix services/agent run start",
+    "start:billing": "npm --prefix services/billing run start",
+    "install:all": "npm install && npm --prefix gateway install && npm --prefix services/auth install && npm --prefix services/chat install && npm --prefix services/agent install && npm --prefix services/billing install"
+  },
+  "dependencies": {
+    "ioredis": "^5.11.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
